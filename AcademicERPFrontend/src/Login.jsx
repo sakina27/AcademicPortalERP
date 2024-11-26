@@ -182,7 +182,7 @@ const Login = () => {
                     borderRadius: 3,
                     maxWidth: 420,
                     width: '90%',
-                    backgroundImage: 'linear-gradient(to bottom right, #d8ecf3, #c3ddf5)',
+                    backgroundImage: 'linear-gradient(to bottom right, #bfbcd4, #b2e6f6)',
                     boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.2)',
                 }}
             >
@@ -192,7 +192,8 @@ const Login = () => {
                     gutterBottom
                     sx={{
                         fontWeight: 'bold',
-                        color: '#0d47a1',
+                        color: "#8e44ad",
+                        textShadow: "1px 1px 2px rgba(0, 0, 0, 0.1)"
                     }}
                 >
                     Employee Login
@@ -203,7 +204,8 @@ const Login = () => {
                     <Box mb={3}>
                         <Typography
                             variant="body1"
-                            sx={{ marginBottom: 1, fontWeight: 'bold', color: '#0d47a1' }}
+                            sx={{ marginBottom: 1, fontWeight: 'bold', color: "#8e44ad",
+                                textShadow: "1px 1px 2px rgba(0, 0, 0, 0.1)" }}
                         >
                             Email
                         </Typography>
@@ -234,7 +236,8 @@ const Login = () => {
                     <Box mb={3}>
                         <Typography
                             variant="body1"
-                            sx={{ marginBottom: 1, fontWeight: 'bold', color: '#0d47a1' }}
+                            sx={{ marginBottom: 1, fontWeight: 'bold', color: "#8e44ad",
+                                textShadow: "1px 1px 2px rgba(0, 0, 0, 0.1)" }}
                         >
                             Password
                         </Typography>
@@ -279,9 +282,9 @@ const Login = () => {
                             marginBottom: 2,
                             padding: '10px 0',
                             fontSize: '1rem',
-                            backgroundColor: '#0d47a1',
+                            background: "linear-gradient(to right, #8e44ad, #3498db)",
                             '&:hover': {
-                                backgroundColor: '#115293',
+                                background: "linear-gradient(to right, #0072ff, #00c6ff)",
                             },
                         }}
                     >
