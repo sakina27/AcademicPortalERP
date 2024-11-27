@@ -28,7 +28,7 @@ const EmployeeCard = ({ employee, isSelected, onCheckboxChange, onModifyClick })
                 <Avatar
                     alt={employee.first_name}
                     src={employee.photograph_path}
-                    sx={{ width: 56, height: 56 }}
+                    sx={{ width: 80, height: 85 }}
                 />
             </Box>
 

@@ -35,6 +35,11 @@ public class EmployeeService {
     private final EmployeeSalaryRepo employeeSalaryRepo;
 
     public String addEmployee(EmployeeResponse request) {
+        Departments department = departmentsRepo.findByName(request.departmentName());
+        if(department == null){
+            department = Departments.builder().name(request.departmentName()).build();
+            departmentsRepo.save(department);
+        }
         Employees emp = Employees.builder()
                 .firstName(request.firstName())
                 .lastName(request.lastName())
@@ -42,10 +47,12 @@ public class EmployeeService {
                 .password(encryptionService.encodePassword(request.password()))
                 .title(request.title())
                 .salary(request.salary())
+                .department(department)
+                .photographPath(request.photographPath())
                 .build();
 
         employeeRepo.save(emp);
-        return "Added";
+        return "Registered Successfully";
     }
 
     public EmployeeAuthResponse loginCustomer(LoginRequest request) {

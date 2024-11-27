@@ -15,13 +15,13 @@ import './App.css';
 
 const Register = () => {
     const [formData, setFormData] = useState({
-        firstName: '',
-        lastName: '',
+        first_name: '',
+        last_name: '',
         email: '',
         title: '',
         department:'',
         salary: '',
-        photographPath: '',
+        photograph_path: '',
         password: '',
     });
 
@@ -42,10 +42,10 @@ const Register = () => {
         try {
             // Replace this API call with the correct endpoint for user registration
             const response = await registerEmployee(formData);
+            console.log(response)
 
-
-            if (response.ok) {
-                navigate('/login');
+            if (response.status===200) {
+                navigate('/');
             } else {
                 const data = await response.json();
                 setError(data.message || 'Registration failed. Please try again.');
@@ -109,13 +109,13 @@ const Register = () => {
                 <form onSubmit={handleRegister}>
                     {/* Form Fields */}
                     {[
-                        { label: 'First Name', name: 'firstName', type: 'text' },
-                        { label: 'Last Name', name: 'lastName', type: 'text' },
+                        { label: 'First Name', name: 'first_name', type: 'text' },
+                        { label: 'Last Name', name: 'last_name', type: 'text' },
                         { label: 'Email', name: 'email', type: 'email' },
                         { label: 'Title', name: 'title', type: 'text' },
-                        { label: 'department', name: 'department', type: 'text' },
+                        { label: 'Department', name: 'department', type: 'text' },
                         { label: 'Salary', name: 'salary', type: 'number' },
-                        { label: 'Photograph Path', name: 'photographPath', type: 'text' },
+                        { label: 'Photograph Path', name: 'photograph_path', type: 'text' },
                         { label: 'Password', name: 'password', type: 'password' },
                     ].map((field, index) => (
                         <Box mb={3} key={index}>
