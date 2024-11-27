@@ -274,9 +274,9 @@ const Login = () => {
                     )}
                     <Typography align="center" sx={{ marginTop: 2 }}>
                         New Employee?{" "}
-                        <a href="/register" style={{ color: "#8e44ad", fontWeight: "bold" }}>
+                        <link href="/register" style={{ color: "#8e44ad", fontWeight: "bold" }}>
                             Register
-                        </a>
+                        </link>
                     </Typography>
                     {/* Submit Button */}
                     <Button
