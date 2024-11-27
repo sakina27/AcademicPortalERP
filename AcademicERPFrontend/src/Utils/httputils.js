@@ -75,3 +75,12 @@ export const disburseSalaries = async (ids) => {
   const response  = await axiosInstance.post("/employees/SalaryDisbursement",ids);
   return response;
 };
+
+export const registerEmployee = async (employee) => {
+    const response = await axiosInstance.post("/employees/newEmployee", employee);
+    console.log(response);
+    //localStorage.setItem("jwt",response.data.token)
+    return response;
+};
+
+

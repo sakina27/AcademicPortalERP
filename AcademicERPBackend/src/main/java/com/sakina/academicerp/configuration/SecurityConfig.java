@@ -32,8 +32,7 @@ public class SecurityConfig implements WebMvcConfigurer {
         // Apply the interceptor to all endpoints except /auth/login
         registry.addInterceptor(requestInterceptor)
                 .addPathPatterns("/**")
-                .excludePathPatterns("/api/v1/employees/login")
-                .excludePathPatterns("/**/options");
+                .excludePathPatterns("/api/v1/employees/login", "/api/v1/employees/newEmployee", "/**/options");
 
     }
 

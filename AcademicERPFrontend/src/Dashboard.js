@@ -14,11 +14,11 @@ const Dashboard = () => {
         localStorage.removeItem("jwt"); // Example for token removal
 
         // Show success toast notification
-        toast.success("Logged out successfully!", {
-            position: toast.POSITION.TOP_CENTER,
-            autoClose: 2000,
-            transition: Bounce,
-        });
+        // toast.success("Logged out successfully!", {
+        //     position: toast.POSITION.TOP_CENTER,
+        //     autoClose: 2000,
+        //     transition: Bounce,
+        // });
 
         // Redirect to the login page after a slight delay (for toast visibility)
         setTimeout(() => {

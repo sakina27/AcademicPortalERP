@@ -124,7 +124,7 @@ import {
     Typography,
     Paper,
     CircularProgress,
-    Alert,
+    Alert, Link,
 } from '@mui/material';
 import './App.css';
 
@@ -146,6 +146,8 @@ const Login = () => {
             setError('Login failed. Please check your credentials.');
         }
     };
+
+
 
     return (
         <Box
@@ -270,7 +272,12 @@ const Login = () => {
                             <Alert severity="error">{error}</Alert>
                         </Box>
                     )}
-
+                    <Typography align="center" sx={{ marginTop: 2 }}>
+                        New Employee?{" "}
+                        <a href="/register" style={{ color: "#8e44ad", fontWeight: "bold" }}>
+                            Register
+                        </a>
+                    </Typography>
                     {/* Submit Button */}
                     <Button
                         type="submit"
