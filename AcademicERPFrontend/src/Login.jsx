@@ -113,7 +113,7 @@
 // export default Login;
 
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { loginUser } from './Utils/httputils';
 import iiitbImage from './Assets/iiitB.png';
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
@@ -124,7 +124,7 @@ import {
     Typography,
     Paper,
     CircularProgress,
-    Alert, Link,
+    Alert
 } from '@mui/material';
 import './App.css';
 
@@ -274,9 +274,9 @@ const Login = () => {
                     )}
                     <Typography align="center" sx={{ marginTop: 2 }}>
                         New Employee?{" "}
-                        <link href="/register" style={{ color: "#8e44ad", fontWeight: "bold" }}>
+                        <Link to="/register" style={{ color: "#8e44ad", fontWeight: "bold" }}>
                             Register
-                        </link>
+                        </Link>
                     </Typography>
                     {/* Submit Button */}
                     <Button

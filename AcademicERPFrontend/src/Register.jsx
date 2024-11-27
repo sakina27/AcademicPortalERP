@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { registerEmployee } from "./Utils/httputils";
+import React from 'react';
+import useRegisterEmployee from './Hooks/useRegistrationEmployee';
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import {
     Box,
@@ -14,48 +13,7 @@ import {
 import './App.css';
 
 const Register = () => {
-    const [formData, setFormData] = useState({
-        first_name: '',
-        last_name: '',
-        email: '',
-        title: '',
-        department:'',
-        salary: '',
-        photograph_path: '',
-        password: '',
-    });
-
-    const [error, setError] = useState('');
-    const [loading, setLoading] = useState(false);
-    const navigate = useNavigate();
-
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData({ ...formData, [name]: value });
-    };
-
-    const handleRegister = async (event) => {
-        event.preventDefault();
-        setError('');
-        setLoading(true);
-
-        try {
-            // Replace this API call with the correct endpoint for user registration
-            const response = await registerEmployee(formData);
-            console.log(response)
-
-            if (response.status===200) {
-                navigate('/');
-            } else {
-                const data = await response.json();
-                setError(data.message || 'Registration failed. Please try again.');
-            }
-        } catch (err) {
-            setError('An error occurred while registering. Please try again.');
-        } finally {
-            setLoading(false);
-        }
-    };
+    const { formData, error, loading, handleChange, handleRegister } = useRegisterEmployee();
 
     return (
         <Box
@@ -68,7 +26,6 @@ const Register = () => {
                 overflow: 'hidden',
             }}
         >
-            {/* Background */}
             <Box
                 sx={{
                     position: 'absolute',
@@ -81,7 +38,6 @@ const Register = () => {
                 }}
             />
 
-            {/* Registration Form */}
             <Paper
                 elevation={5}
                 sx={{
@@ -100,14 +56,13 @@ const Register = () => {
                     sx={{
                         fontWeight: 'bold',
                         color: "#8e44ad",
-                        textShadow: "1px 1px 2px rgba(0, 0, 0, 0.1)"
+                        textShadow: "1px 1px 2px rgba(0, 0, 0, 0.1)",
                     }}
                 >
                     Register
                 </Typography>
 
                 <form onSubmit={handleRegister}>
-                    {/* Form Fields */}
                     {[
                         { label: 'First Name', name: 'first_name', type: 'text' },
                         { label: 'Last Name', name: 'last_name', type: 'text' },
@@ -121,8 +76,12 @@ const Register = () => {
                         <Box mb={3} key={index}>
                             <Typography
                                 variant="body1"
-                                sx={{ marginBottom: 1, fontWeight: 'bold', color: "#8e44ad",
-                                    textShadow: "1px 1px 2px rgba(0, 0, 0, 0.1)" }}
+                                sx={{
+                                    marginBottom: 1,
+                                    fontWeight: 'bold',
+                                    color: "#8e44ad",
+                                    textShadow: "1px 1px 2px rgba(0, 0, 0, 0.1)",
+                                }}
                             >
                                 {field.label}
                             </Typography>
@@ -151,14 +110,12 @@ const Register = () => {
                         </Box>
                     ))}
 
-                    {/* Error Message */}
                     {error && (
                         <Box mb={2}>
                             <Alert severity="error">{error}</Alert>
                         </Box>
                     )}
 
-                    {/* Submit Button */}
                     <Button
                         type="submit"
                         variant="contained"

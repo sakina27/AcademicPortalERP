@@ -380,9 +380,15 @@ const EmployeeList = () => {
     setPaginatedEmployees(filteredEmployees.slice(0, newSize));
   };
 
+  // useEffect(() => {
+  //   setPaginatedEmployees(filteredEmployees.slice(0, pageSize));
+  // }, [filteredEmployees, pageSize, currentPage]);
+
   useEffect(() => {
-    setPaginatedEmployees(filteredEmployees.slice(0, pageSize));
-  }, [filteredEmployees, pageSize, currentPage]);
+    const startIndex = (currentPage - 1) * pageSize;
+    const endIndex = startIndex + pageSize;
+    setPaginatedEmployees(filteredEmployees.slice(startIndex, endIndex));
+  }, [filteredEmployees, currentPage, pageSize]);
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p className="error">{error}</p>;
@@ -455,7 +461,7 @@ const EmployeeList = () => {
         </Grid>
 
         {/* Pagination and Page Size Selector */}
-        <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", gap: "2rem" }}>
+        <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", gap: "2rem", marginTop:"2rem" }}>
           {/* Page Size Selector */}
           <div>
             <label htmlFor="page-size-select" style={{ marginRight: "0.5rem" }}>

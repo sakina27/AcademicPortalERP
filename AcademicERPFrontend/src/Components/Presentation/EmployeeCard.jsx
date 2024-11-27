@@ -9,7 +9,7 @@ const EmployeeCard = ({ employee, isSelected, onCheckboxChange, onModifyClick })
                 flexDirection: "column",
                 justifyContent: "space-between",
                 alignItems: "center",
-                background: "linear-gradient(to bottom right, #bfbcd4, #b2e6f6)",
+                background: "linear-gradient(to bottom right, #ebdbfd, #ebdbfd)",
                 borderRadius: "15px",
                 boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)",
                 padding: "16px",
@@ -19,11 +19,13 @@ const EmployeeCard = ({ employee, isSelected, onCheckboxChange, onModifyClick })
         >
             <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
                 {/* Checkbox */}
+                {employee.department == "Faculty" && (
                 <Checkbox
                     checked={isSelected}
                     onChange={(event) => onCheckboxChange(event, employee)}
                     sx={{ alignSelf: "flex-start" }}
                 />
+                )}
                 {/* Avatar */}
                 <Avatar
                     alt={employee.first_name}
@@ -56,6 +58,7 @@ const EmployeeCard = ({ employee, isSelected, onCheckboxChange, onModifyClick })
             </CardContent>
 
             {/* Modify Button */}
+
             <Button
                 variant="contained"
                 onClick={() => onModifyClick(employee)}
@@ -70,6 +73,7 @@ const EmployeeCard = ({ employee, isSelected, onCheckboxChange, onModifyClick })
             >
                 Modify
             </Button>
+
         </Card>
     );
 };
